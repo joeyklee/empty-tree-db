@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
   // initialize with an updated view
   await updateView();
   
-  form.addEventListener('submit', async (evt)=>{
+  $form.addEventListener('submit', async (evt)=>{
     const formData = new FormData($form);
     const newData = {
       latitude: formData.get('latitude'),
