@@ -2,7 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', async () =>{
   let data;
-  const baseUrl = 'https://joeyklee-empty-tree-db.glitch.me';
+  // const baseUrl = 'https://joeyklee-empty-tree-db.glitch.me';
   // const baseUrl = 'http://localhost:3000';
 
   const $locationsList = document.querySelector('.locations__list');
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
       body: JSON.stringify(newData)
     }
 
-    let results = await fetch(baseUrl + "/api/v1/trees", options)
+    let results = await fetch("/api/v1/trees", options)
     results = await results.json();
 
     await updateView();
@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
     // clear the view
     $locationsList.innerHTML = "";
     // get the data - Note we are making a whole new network request each time 
-    data = await fetch(baseUrl + "/api/v1/trees", {method:"GET"});
+    data = await fetch("/api/v1/trees", {method:"GET"});
     data = await data.json();
     console.log(data);
 
