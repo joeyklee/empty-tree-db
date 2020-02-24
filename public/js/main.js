@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
   await updateView();
   
   $form.addEventListener('submit', async (evt)=>{
+    evt.preventDefault();
     const formData = new FormData($form);
     const newData = {
       latitude: formData.get('latitude'),
