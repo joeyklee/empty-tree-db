@@ -21,6 +21,10 @@ window.addEventListener('DOMContentLoaded', async () =>{
 
     const options = {
       method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(newData)
     }
 
