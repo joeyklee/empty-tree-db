@@ -14,9 +14,9 @@ window.addEventListener('DOMContentLoaded', async () =>{
     evt.preventDefault();
     const formData = new FormData($form);
     const newData = {
-      latitude: formData.get('latitude'),
-      longitude: formData.get('longitude'),
-      empty:formData.get('empty'),
+      latitude: Number(formData.get('latitude')),
+      longitude: Number(formData.get('longitude')),
+      empty: Boolean(formData.get('empty')),
     }
 
     const options = {
