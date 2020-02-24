@@ -48,7 +48,6 @@ app.get('/', (req, res) => {
  */
 app.get('/api/v1/trees', async (req, res, next) => {
   try {
-    console.log('ehllo')
     res.json(data);
   } catch (error) {
     res.json({ error: JSON.stringify(error) });
@@ -60,12 +59,14 @@ app.get('/api/v1/trees', async (req, res, next) => {
  */
 app.post('/api/v1/trees', async (req, res, next) => {
   try {
+
     const newPost = {
       latitude: Number(req.body.latitude),
       longitude: Number(req.body.longitude),
       empty: Boolean(req.body.empty),
       id: uniqid()
     };
+    console.log(newPost);
 
     data.push(newPost);
 

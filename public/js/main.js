@@ -3,6 +3,7 @@
 window.addEventListener('DOMContentLoaded', async () =>{
   let data;
   const baseUrl = 'https://joeyklee-empty-tree-db.glitch.me';
+  // const baseUrl = 'http://localhost:3000';
 
   const $locationsList = document.querySelector('.locations__list');
   const $form = document.querySelector('.form');
@@ -18,6 +19,8 @@ window.addEventListener('DOMContentLoaded', async () =>{
       longitude: Number(formData.get('longitude')),
       empty: Boolean(formData.get('empty')),
     }
+
+    console.log(newData);
 
     const options = {
       method: "POST",
