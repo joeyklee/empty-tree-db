@@ -1,23 +1,54 @@
+
+
 window.addEventListener('DOMContentLoaded', async () =>{
+  let data;
   const baseUrl = 'https://joeyklee-empty-tree-db.glitch.me';
 
-  let data = await fetch(baseUrl + "/api/v1/trees", {method:"GET"});
-  data = await data.json();
-  console.log(data);
+  const $locationsList = document.querySelector('.locations__list');
+  const $form = document.querySelector('.form');
 
-  const $locationsList= document.querySelector('.locations__list');
+  // initialize with an updated view
+  await updateView();
+  
+  form.addEventListener('submit', async (evt)=>{
+    const formData = new FormData($form);
+    const newData = {
+      latitude: formData.get('latitude'),
+      longitude: formData.get('longitude'),
+      empty:formData.get('empty'),
+    }
 
-  data.forEach(item => {
-    const $el = document.createElement('LI')
-    $el.innerHTML = `
-    <p>latitude: ${item.latitude}</p>
-    <p>longitude: ${item.longitude}</p>
-    <p>empty: ${item.empty}</p>
-    `
+    const options = {
+      method: "POST",
+      body: JSON.stringify(newData)
+    }
 
-    $locationsList.appendChild($el);
+    let results = await fetch(baseUrl + "/api/v1/trees", options)
+    results = await results.json();
+    console.log(results);
+
+    await updateView();
   })
 
+  async function updateView(){
+    // clear the view
+    $locationsList.innerHTML = "";
+    // get the data - Note we are making a whole new network request each time 
+    data = await fetch(baseUrl + "/api/v1/trees", {method:"GET"});
+    data = await data.json();
+    console.log(data);
 
+    // update the dom
+    data.forEach(item => {
+      const $el = document.createElement('LI')
+      $el.innerHTML = `
+      <p>latitude: ${item.latitude}</p>
+      <p>longitude: ${item.longitude}</p>
+      <p>empty: ${item.empty}</p>
+      `
+      $locationsList.appendChild($el);
+    });
+  }
 
 })
+
