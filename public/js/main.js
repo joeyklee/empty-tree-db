@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
   data = await data.json();
   console.log(data);
 
-  const $main = document.querySelector('.main');
+  const $locationsList= document.querySelector('.locations__list');
 
   data.forEach(item => {
     const $el = document.createElement('LI')
@@ -15,9 +15,9 @@ window.addEventListener('DOMContentLoaded', async () =>{
     <p>empty: ${item.empty}</p>
     `
 
-    $main.appendChild($el);
+    $locationsList.appendChild($el);
   })
 
 
-  
+
 })
