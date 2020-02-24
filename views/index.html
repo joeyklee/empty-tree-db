@@ -20,7 +20,31 @@
       <header class="header">
         <h1 class="header__title">Empty Tree Database - NYC</h1>
       </header>
-      <main class="main"></main>
+      <main class="main">
+        <section class="controls">
+          <form class="form">
+            <fieldset class="form__group">
+              <legend class="form__input-title">latitude</legend>
+              <input type="text" name="latitude" class="form__input form__input--text">
+            </fieldset>
+            <fieldset class="form__group">
+              <legend class="form__input-title">longitude</legend>
+              <input type="text" name="longitude" class="form__input form__input--text">  
+            </fieldset>
+            <fieldset class="form__group">
+              <legend class="form__input-title">status</legend>
+              <select name="empty">
+                <option value="true" selected>Empty</option>
+                <option value="false">Not Empty</option>
+              </select>
+            </fieldset>
+            <input type="submit" value="submit">
+          </form>
+        </section>
+        <section class="locations">
+
+        </section>
+      </main>
       <footer class="footer"></footer>
     </div>
     <script src="./js/main.js"></script>

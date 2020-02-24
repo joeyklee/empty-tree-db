@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', async () =>{
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = 'https://joeyklee-empty-tree-db.glitch.me';
 
   let data = await fetch(baseUrl + "/api/v1/trees", {method:"GET"});
   data = await data.json();
@@ -17,4 +17,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
 
     $main.appendChild($el);
   })
+
+
+  
 })
