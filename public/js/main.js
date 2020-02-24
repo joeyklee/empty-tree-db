@@ -20,8 +20,6 @@ window.addEventListener('DOMContentLoaded', async () =>{
       empty: Boolean(formData.get('empty')),
     }
 
-    console.log(newData);
-
     const options = {
       method: "POST",
       headers: {
@@ -33,7 +31,6 @@ window.addEventListener('DOMContentLoaded', async () =>{
 
     let results = await fetch(baseUrl + "/api/v1/trees", options)
     results = await results.json();
-    console.log(results);
 
     await updateView();
   })
@@ -49,11 +46,25 @@ window.addEventListener('DOMContentLoaded', async () =>{
     // update the dom
     data.forEach(item => {
       const $el = document.createElement('LI')
+      $el.classList.add("location__item");
+      $el.id = item.id;
+
       $el.innerHTML = `
       <p>latitude: ${item.latitude}</p>
       <p>longitude: ${item.longitude}</p>
       <p>empty: ${item.empty}</p>
+      <button class="location__delete">delete</button>
       `
+
+      $el.addEventListener('click', async(evt) => {
+        evt.preventDefault();
+        const id = evt.target.parentNode.id
+        let deleteMessage = await fetch(baseUrl + `/api/v1/trees/${id}`, {method:"DELETE"});
+        deleteMessage = await deleteMessage.json();
+        alert(JSON.stringify(deleteMessage));
+        await updateView()
+      });
+
       $locationsList.appendChild($el);
     });
   }

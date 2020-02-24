@@ -12,3 +12,47 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#app{
+  padding: 1rem;
+}
+
+/* list */
+.controls{
+  padding: 1rem;
+}
+.controls__title{
+  font-size: 1.4rem;
+}
+
+
+.form__group{
+  max-width:500px;
+  padding: 0.5rem 1rem;
+}
+
+.form__input--text{
+  width:100%;
+  height: 1.4rem;
+  background-color: #eee;
+  border:none;
+  padding: 0.5rem 0.5rem;
+}
+
+
+
+/* locations list */
+
+.locations__list{
+  display:flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.location__item{
+  border:1px solid black;
+  padding: 1rem;
+}
+
+.location__item:not(:last-child){
+  margin-bottom: 1rem;
+}

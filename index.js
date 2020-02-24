@@ -83,7 +83,7 @@ app.post('/api/v1/trees', async (req, res, next) => {
  */
 app.get('/api/v1/trees/:id', async (req, res, next) => {
   try {
-    const selected = data.find(item => item.id === Number(req.params.id));
+    const selected = data.find(item => item.id === req.params.id);
     res.json(selected);
   } catch (error) {
     res.json({ error: JSON.stringify(error) });
@@ -104,7 +104,7 @@ app.put('/api/v1/trees/:id', async (req, res, next) => {
     };
 
     const updatedData = data.map(item => {
-      if (item.id === Number(selectedId)) {
+      if (item.id === selectedId) {
         return updatedPost;
       }
       return item;
@@ -125,8 +125,10 @@ app.put('/api/v1/trees/:id', async (req, res, next) => {
  */
 app.delete('/api/v1/trees/:id', async (req, res, next) => {
   try {
-    data = data.filter(item => item.id === Number(req.params.id));
-  await writeFile(dataPath, data);
+    console.log(req.params.id);
+    data = data.filter(item => item.id === req.params.id);
+    console.log(data);
+    await writeFile(dataPath, data);
   res.json({"message":"successfully removed item"});
   } catch (error) {
     res.json({ error: JSON.stringify(error) });
